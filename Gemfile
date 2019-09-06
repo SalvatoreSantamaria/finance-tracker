@@ -5,7 +5,8 @@ ruby '2.6.3'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
-#gem 'stock_quote' #outdated 
+gem 'stock_quote', '~>3.0.0' #outdated? 
+gem "iex-ruby-client" #workaround?
 gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
