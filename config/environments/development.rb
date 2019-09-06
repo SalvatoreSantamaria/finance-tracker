@@ -58,4 +58,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
 end
+
+IEX::Api.configure do |config|
+      config.publishable_token= 'pk_731ed7a1fdad41a882811eb1b2b0e3ac'
+end
+
