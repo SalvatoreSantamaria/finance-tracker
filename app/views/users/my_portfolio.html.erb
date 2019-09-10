@@ -1,7 +1,7 @@
 <h1>My Portfolio Page</h1>
 <h3>Search for Stocks</h3>
     <div id='stock-lookup'>
-        <%= form_tag "search_stocks", method: :get, id: "stock-lookup-form" do%>
+        <%= form_tag "search_stocks", remote: true, method: :get, id: "stock-lookup-form" do%> <%#remote true sets form to be submitted thru ajax %>
             <div class = 'form-group row no padding text-center col-md-12'>
                 <div class="col-md-10">
                 <%# #:stock is name, value is params[:stock] , so we can send through params hash%>
@@ -15,10 +15,6 @@
             </div>
         <% end %>
     </div>
-<% if @stock %> <%# if stock exists, below will render %>
-    <div class = "well results-block">
-        <strong>Symbol: </strong><%= @stock.ticker%>
-        <strong>Symbol: </strong><%= @stock.name%>
-        <strong>Symbol: </strong><%= @stock.last_price%>
-    </div>
-<% end %>
+<div id = 'results'>   <%# using ajax %>
+    <%= render 'result' %>
+</div>

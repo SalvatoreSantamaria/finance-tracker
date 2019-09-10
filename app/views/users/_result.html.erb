@@ -1,0 +1,7 @@
+<% if @stock %> <%# if stock exists, below will render %>
+    <div class = "well results-block">
+        <strong>Symbol: </strong><%= @stock.ticker%>
+        <strong>Symbol: </strong><%= @stock.name%>
+        <strong>Symbol: </strong><%= @stock.last_price%>
+    </div>
+<% end %>
