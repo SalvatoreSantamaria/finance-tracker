@@ -1,0 +1,6 @@
+<%# for using ajax %>
+<%# here we are triggering partial %>
+
+<%# getting results id %>
+<%# in html, render the result.html partial, render the result |  j is to escape javascript %>
+$('#results').html("<%= j(render 'users/result.html')%>") 

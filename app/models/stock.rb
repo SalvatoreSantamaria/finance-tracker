@@ -1,4 +1,4 @@
-class Stock < ApplicationRecord
+class Stock < ApplicationRecord #stock model
   has_many :user_stocks
   has_many :users, through: :user_stocks
  
@@ -15,7 +15,7 @@ class Stock < ApplicationRecord
       new(name: looked_up_stock.company_name, #new stock object with stock name, stock ticker, and stock last price
         #is this working correctly? currenly, i can access in rails console with .company_name, .symbol, .latest_price
           ticker: looked_up_stock.symbol, last_price: looked_up_stock.latest_price)
-    rescue Exception => e
+    rescue Exception => e #catch exception - this method only works if something returns, otherwise returns nil
       return nil
     end
   end
