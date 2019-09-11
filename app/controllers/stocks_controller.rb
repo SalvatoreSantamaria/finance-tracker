@@ -8,12 +8,16 @@ class StocksController < ApplicationController
                 format.js {render partial: 'users/result'}
             end
         else
-            flash[:danger] = "You have entered an incorrect ticker symbol"
-            redirect_to my_portfolio_path
+            respond_to do |format|
+                flash.now[:danger] = "You have entered an incorrect ticker symbol" #.now keeps flash limited to 1 request cycle
+                format.js { render partial: 'users/result' }
+            end
         end       
-        else 
-            flash[:danger] = "Cannot enter an empty search string"
-            redirect_to my_portfolio_path
+        else
+            respond_to do |format|
+                flash.now[:danger] = "Cannot enter an empty search string"
+            format.js { render partial: 'users/result' }
+            end    
         end
     end
 # from text directions
