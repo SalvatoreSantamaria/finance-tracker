@@ -7,5 +7,7 @@
         <strong>Symbol: </strong><%= @stock.ticker%>
         <strong>Symbol: </strong><%= @stock.name%>
         <strong>Symbol: </strong><%= @stock.last_price%>
+        <%# The below is a link with a custom link route: see routes.rb > resources :user_stocks, only: [:create]  %>
+        <%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: @stock.ticker), class: "btn btn-xs btn-success", method: :post %> <%# passing in current_user to user, and stock.ticker to stock_ticker%>
     </div>
 <% end %>

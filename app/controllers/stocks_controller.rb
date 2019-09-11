@@ -17,7 +17,7 @@ class StocksController < ApplicationController
             respond_to do |format|
                 flash.now[:danger] = "Cannot enter an empty search string"
             format.js { render partial: 'users/result' }
-            end    
+            end
         end
     end
 # from text directions
