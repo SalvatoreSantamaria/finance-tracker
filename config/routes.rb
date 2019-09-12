@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'my_portfolio', to: "users#my_portfolio" #going to users controller, my_portfolio action
   get 'search_stocks', to: 'stocks#search' #unsure if this is outdated
+  resources :user_stocks, only: [:create] #for a button link in _result.html.erb | #only want the create route here
 end
