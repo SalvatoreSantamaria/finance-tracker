@@ -8,7 +8,18 @@
         <strong>Symbol: </strong><%= @stock.ticker%>
         <strong>Symbol: </strong><%= @stock.name%>
         <strong>Symbol: </strong><%= @stock.last_price%>
+        <% if current_user.can_add_stock?(@stock.ticker)%>
         <%# The below is a link with a custom link route: see routes.rb > resources :user_stocks, only: [:create]  %>
         <%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: @stock.ticker), class: "btn btn-xs btn-success", method: :post %> <%# passing in current_user to user, and stock.ticker to stock_ticker%>
+        <% else %>
+            <span class = "label label-default"> Stock cannot be added because you have already added</span>
+                <%if !current_user.under_stock_limit?%>
+                    10 stocks
+                <% end %>
+                <% if current_user.stock_already_added?(@stock.ticker) %>
+                    this stock
+                <% end %>
+        <% end %>
+
     </div>
 <% end %>
