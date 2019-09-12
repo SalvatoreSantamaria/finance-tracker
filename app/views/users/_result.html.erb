@@ -1,7 +1,8 @@
-
-<div class = "results-block">
-    <%= bootstrap_flash %>
-</div>
+<% if params[:action] == 'search' %> <%# search if coming from stocks controller %>
+    <div class = "results-block">
+        <%= bootstrap_flash %>
+    </div>
+<% end %>
 <% if @stock %> <%# if stock exists, below will render %>
     <div class = "well results-block">
         <strong>Symbol: </strong><%= @stock.ticker%>
