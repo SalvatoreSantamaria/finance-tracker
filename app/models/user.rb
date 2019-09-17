@@ -20,4 +20,12 @@ class User < ApplicationRecord
   def can_add_stock?(ticker_symbol)
     under_stock_limit? && !stock_already_added?(ticker_symbol) #stock isn't already added to users portfolio, and stock is under the limit of 10
   end
+
+  #adding method to return full name
+  def fullname
+    return "#{first_name} #{last_name}".strip if (first_name || last_name) #return this if true
+    "Anonymous" #return if false
+  end
+
+
 end
