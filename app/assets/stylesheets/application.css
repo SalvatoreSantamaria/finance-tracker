@@ -25,7 +25,6 @@
      padding: 0 !important;
  }
 
-<<<<<<< HEAD
  .logout {
   padding-left: 0;
 }
@@ -34,18 +33,12 @@
   padding-top: 15px;
 }
 
-// nested structure with sass!
-.nav.navbar-right li {
-  .btn {
+/* // nested structure with sass not working, so not doing it */
+.nav.navbar-right li .btn {
   color: #fff !important;
   margin-top: 5%;
-  }
-  .btn-danger:hover {
-    background-color: darken(#d9534f, 20%) !important;
-  }
 }
-=======
-  .left-padding {
-     padding-left: 15px !important;
- }
->>>>>>> 3df8affc2ae123a68dd5925848ea83a855d24ad3
+
+.nav.navbar-right li .btn-danger:hover {
+  background-color: darken(#d9534f, 20%) !important;
+}
