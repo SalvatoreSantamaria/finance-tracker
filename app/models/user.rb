@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
 
+  #many to many association, there is no friend model (it does not exist)
+  has_many :friendships
+  has_many :friends, through: :friendships
+
   def stock_already_added?(ticker_symbol) #checking to see if ticker symbol is already in users portfolio
     stock = Stock.find_by_ticker(ticker_symbol) #from Stock class
     return false unless stock #if stock isn't being tracked (no association)
