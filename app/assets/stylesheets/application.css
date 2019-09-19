@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
 
- 
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -42,3 +42,5 @@
 .nav.navbar-right li .btn-danger:hover {
   background-color: darken(#d9534f, 20%) !important;
 }
+
+
