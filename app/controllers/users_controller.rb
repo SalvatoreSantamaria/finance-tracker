@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     end
 
     def my_friends
-        
+        @friendships = current_user.friends # can do this because we have many to many association
+    end
+
+    def search
+    
     end
 end
