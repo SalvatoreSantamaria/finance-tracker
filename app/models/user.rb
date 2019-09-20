@@ -31,5 +31,28 @@ class User < ApplicationRecord
     "Anonymous" #return if false
   end
 
+  def self.search(param) #seeing if anything matches the below, will return multiple answers due to 'like' in self.matches db query- but only 
+    #unique ones due to the .uniq below
+    param.strip! #to get ride of any extra spaces
+    param.downcase!
+    return nil unless to_send_back
+    to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq #.uniq is to eliminate any duplicates
+  end
+
+  def self.first_name_matches(param)
+    matches('first_name', param)
+  end
+
+  def self.last_name_matches(param)
+    matches('last_name', param)
+  end
+
+  def self.email_matches(param)
+    matches('email', param)
+  end
+
+  def self.matches(field_name, param)
+    User.where("#{field_name} like ?", "%#{param}%") 
+  end
 
 end
