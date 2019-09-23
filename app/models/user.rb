@@ -35,8 +35,9 @@ class User < ApplicationRecord
     #unique ones due to the .uniq below
     param.strip! #to get ride of any extra spaces
     param.downcase!
-    return nil unless to_send_back
     to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq #.uniq is to eliminate any duplicates
+    return nil unless to_send_back
+    to_send_back
   end
 
   def self.first_name_matches(param)

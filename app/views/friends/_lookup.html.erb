@@ -1,4 +1,7 @@
 <h1>My Friends</h1>
+<div id="results">
+  <%= render 'result' %>
+</div>
 <h3>Search for Friends</h3>
     <div id='friend-lookup'>
         <%= form_tag "search_friends", remote: true, method: :get, id: "friend-lookup-form" do%> <%#remote true sets form to be submitted thru ajax %>

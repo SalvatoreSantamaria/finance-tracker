@@ -7,9 +7,16 @@ class UsersController < ApplicationController
     def my_friends
         @friendships = current_user.friends # can do this because we have many to many association
     end
-
+    
     def search
-        @users = User.search(params[:search_param])
-        render json: @users
+        if params[:search_param].blank? #checking search is present
+            flash.now[:danger] = "You have entered an empty search string"
+        else
+            @users = User.search(params[:search_param])#@user is the entered user search result
+            flash.now[:danger] = "No users match this search criteria" if @users.blank? #no matching returns this error
+            end
+            respond_to do |format|
+            format.js { render partial: 'friends/result' }
+            end
+        end
     end
-end
