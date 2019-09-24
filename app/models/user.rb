@@ -56,4 +56,14 @@ class User < ApplicationRecord
     User.where("#{field_name} like ?", "%#{param}%") 
   end
 
+  # Prevents search results from populating self. Not a class level method. Will run this method on an instance of the class, therefore do not need the 'self' here
+  def except_current_user(users) #passing in instance variable of users
+    users.reject{ |user| user.id == self.id } #if the (instance that's calling it, which is a user) search users id matches the search result user that populates, reject it.
+  end
+
+  # Looks for friends that already friends with
+  def not_friends_with?(friend_id)
+    friendships.where(friend_id: friend_id).count < 1 #if count is < 1 , ie 0, not friend with that person.
+  end
+
 end

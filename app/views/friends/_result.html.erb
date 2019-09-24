@@ -3,3 +3,29 @@
         <%= bootstrap_flash %>
     </div>
 <% end %>
+
+<% if @users %>
+    <div id= "friend-lookup-results" class="well results-block col-md-10">
+        <table class= "search-results-table col-md-12">
+            <tbody>
+                <%# looping thru users %>
+                <% @users.each do |user| %> 
+                    <tr>
+                        <td><strong>Name: </strong> <%= user.full_name %></td>
+                        <td><strong>Email: </strong> <%= user.email %></td>
+                        <td><strong>Profile: </strong> 
+                        <%# load found users if they are not currently friends with the user id %>
+                        <% if current_user.not_friends_with?(user.id)%> 
+                            <%= link_to "View Profile", "#", class: "btn btn-xs btn-success" %>
+                                <%# add-add_friend_path needs the current user, and the friend %>
+                            <%= link_to "Add friend", add_friend_path(user: current_user, friend: user), class: "btn btn-xs btn-success", method: :post %>
+                        </td>
+                        <% else %>
+                            <span class= "label label-primary">You are already friends</span>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% end %>
