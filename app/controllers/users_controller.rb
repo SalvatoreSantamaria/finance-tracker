@@ -13,6 +13,9 @@ class UsersController < ApplicationController
             flash.now[:danger] = "You have entered an empty search string"
         else
             @users = User.search(params[:search_param])#@user is the entered user search result
+            #filter out the users own name from the search results
+            #current_user calling the except_current_user method, therefore
+            @users = current_user.except_current_user(@users) 
             flash.now[:danger] = "No users match this search criteria" if @users.blank? #no matching returns this error
             end
             respond_to do |format|
