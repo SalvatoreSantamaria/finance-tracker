@@ -35,5 +35,10 @@ class UsersController < ApplicationController
             redirect_to my_friends_path
         end
     end
+
+    def show
+        @user = User.find(params[:id]) #grab user with the param here. 
+        @user_stocks = @user.stocks #pass in user stocks instance variable, so that the list partial can use it to populate the users friends stocks 
+    end
         
     end

@@ -1,4 +1,4 @@
-class User::ResgistrationsController < Devise::ResgistrationsController
+class User::RegistrationsController < Devise::RegistrationsController
     #inheirits everthing from Devise, but will look in User first and then Devise
     before_action :configure_permitted_parameters
     
