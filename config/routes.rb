@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "user/registrations"} #look at user/registrations controller first.
+  devise_for :users, :controllers => {:registrations => "user/registrations"} #look at user/registrations controller first.
   resources :user_stocks, only: [:create, :destroy] #for a button link in _result.html.erb | #only want the create and destroy routes here
   resources :users, only: [:show] #for my_friends.html.erb
   resources :friendships

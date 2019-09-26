@@ -4,8 +4,9 @@
             <th>Name</th>
             <th>Symbol</th>
             <th>Current Price</th>
-            <%# #working with @user instance variable %>
-            <% if @user.id == current_user.id %><%# if current user. we have to provide access to instance variable @user in the controller%>
+            <%# #working with @user instance variable %> 
+            <% if @user.id == current_user.id %><%# if current user. we have to provide access to instance variable @user in the controller. using this partial to show
+            users friends stocks as well, which is why this block exists- will prevent actions from rendering if not viewing own profile %>
             <th>Action</th>
             <% end %>
         </tr>

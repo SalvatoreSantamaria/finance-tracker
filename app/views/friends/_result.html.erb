@@ -17,7 +17,7 @@
                             <td><strong>Profile: </strong> 
                             <%# load found users if they are not currently friends with the user id %>
                             <% if current_user.not_friends_with?(user.id)%> 
-                                <%= link_to "View Profile", "#", class: "btn btn-xs btn-success" %>
+                                <%= link_to "View Profile", user_path(user), class: "btn btn-xs btn-success" %>
                                     <%# add-add_friend_path needs the current user, and the friend %>
                                 <%= link_to "Add friend", add_friend_path(user: current_user, friend: user), class: "btn btn-xs btn-success", method: :post %>
                             </td>
